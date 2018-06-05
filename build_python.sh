@@ -19,6 +19,6 @@ tar -zxvf Python-3.6.5.tgz &> /dev/null
 
 cd Python-3.6.5
 large_echo "Configure Python"
-./configure MACOSX_DEPLOYMENT_TARGET=10.9 CPPFLAGS="-I$OPENSSL_ROOT/include" LDFLAGS="-L$OPENSSL_ROOT/lib" --prefix="$CURRENT_DIR/python-portable"
+./configure MACOSX_DEPLOYMENT_TARGET=10.9 CPPFLAGS="-I$OPENSSL_ROOT/include" LDFLAGS="-L$OPENSSL_ROOT/lib" --prefix="$CURRENT_DIR/python"
 large_echo "Build Python"
 make altinstall
