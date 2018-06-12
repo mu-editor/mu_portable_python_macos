@@ -22,3 +22,4 @@ large_echo "Configure Python"
 ./configure MACOSX_DEPLOYMENT_TARGET=10.9 CPPFLAGS="-I$OPENSSL_ROOT/include" LDFLAGS="-L$OPENSSL_ROOT/lib" --prefix="$CURRENT_DIR/python"
 large_echo "Build Python"
 make altinstall
+make bininstall
