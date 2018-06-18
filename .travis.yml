@@ -43,7 +43,7 @@ script:
   - mkdir portable_root
   - cp -r python portable_root/
   - echo "Python 3.6.5" >> ./portable_root/version.txt
-  - tar czf upload/python3-reduced.tar.gz python/
+  - tar czf upload/python3-reduced.tar.gz portable_root/
   - curl --upload-file ./upload/python3-reduced.tar.gz https://transfer.sh/python3-reduced.tar.gz | tee -a output_urls.txt && echo "" >> output_urls.txt
 
   # Print all uploaded files URLs
