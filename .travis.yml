@@ -34,6 +34,7 @@ script:
   - cd python
   - otool -L bin/python3.6
   - echo "Python 3.6.5" >> ./version.txt
+  - cp python/bin/python3.6 python/bin/python3
   - ./bin/python3 -c 'import ssl; print(ssl.OPENSSL_VERSION)'
   - ./bin/python3 -m pip --version
 
