@@ -33,8 +33,10 @@ script:
   - du -sk python/
   - cd python
   - otool -L bin/python3.6
-  - ./bin/python3.6 -c 'import ssl; print(ssl.OPENSSL_VERSION)'
-  - ./bin/python3.6 -m pip --version
+  - echo "Python 3.6.5" >> ./version.txt
+  - cp ./bin/python3.6 ./bin/python3
+  - ./bin/python3 -c 'import ssl; print(ssl.OPENSSL_VERSION)'
+  - ./bin/python3 -m pip --version
 
   # Reduce stand-alone Python and upload it
   - cd "$PROJECT_DIR"
