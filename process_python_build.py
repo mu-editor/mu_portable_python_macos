@@ -32,6 +32,7 @@ PYTHON_REMOVE_FILES = [
 PYTHON_KEEP_BIN_ITEMS = [
     PYTHON_VER,
     'pip{}'.format(VERSION_STR),
+    'python3',
 ]
 
 
