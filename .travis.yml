@@ -10,7 +10,7 @@ matrix:
 before_install:
   # OS and default Python info
   - uname -a
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then sw_vers; fi
+  - sw_vers
 
 install:
   - HOMEBREW_NO_AUTO_UPDATE=1 brew install openssl

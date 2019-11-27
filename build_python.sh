@@ -22,6 +22,6 @@ tar -zxvf "Python-$PY_VER.tgz" &> /dev/null
 
 cd "Python-$PY_VER"
 large_echo "Configure Python"
-./configure MACOSX_DEPLOYMENT_TARGET=10.11 CPPFLAGS="-I$OPENSSL_ROOT/include" LDFLAGS="-L$OPENSSL_ROOT/lib" --prefix="$CURRENT_DIR/python"
+./configure MACOSX_DEPLOYMENT_TARGET=10.11 CPPFLAGS="-I$OPENSSL_ROOT/include" LDFLAGS="-L$OPENSSL_ROOT/lib" --with-openssl="$OPENSSL_ROOT" --prefix="$CURRENT_DIR/python"
 large_echo "Build Python"
 make altinstall
