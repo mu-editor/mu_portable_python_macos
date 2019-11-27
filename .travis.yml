@@ -32,15 +32,15 @@ script:
   - cd "$PROJECT_DIR"
   - du -sk python/
   - cd python
-  - otool -L bin/python3.6
-  - cp ./bin/python3.6 ./bin/python3
+  - otool -L bin/python3.7
+  - cp ./bin/python3.7 ./bin/python3
   - ./bin/python3 -c 'import ssl; print(ssl.OPENSSL_VERSION)'
   - ./bin/python3 -m pip --version
 
   # Reduce stand-alone Python and upload it
   - cd "$PROJECT_DIR"
   - python process_python_build.py "$PROJECT_DIR/python"
-  - echo "Python 3.6.5" >> ./python/version.txt
+  - echo "Python 3.7.5" >> ./python/version.txt
   - tar czf upload/python3-reduced.tar.gz python/
   - curl --upload-file ./upload/python3-reduced.tar.gz https://transfer.sh/python3-reduced.tar.gz | tee -a output_urls.txt && echo "" >> output_urls.txt
 
