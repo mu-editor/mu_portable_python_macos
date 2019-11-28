@@ -1,0 +1,42 @@
+name: Build Python
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    # OS info
+    - run: uname -a && sw_vers
+    # We need to ensure openSSL is available
+    - run: HOMEBREW_NO_AUTO_UPDATE=1 brew install openssl
+    - run: brew list --versions openssl
+    - run: OPEN_SSL_DIR=$(brew --prefix openssl) && echo $OPEN_SSL_DIR
+    #- run: "$OPEN_SSL_DIR/bin/openssl" version
+    # Download, build Python, and upload it
+    - run: sh build_python.sh
+    - run: mkdir upload
+    - run: tar czf upload/python3-full.tar.gz python/
+    - uses: actions/upload-artifact@v1
+      with:
+        name: python3-full
+        path: ./upload/python3-full.tar.gz
+    # Check built Python
+    - run: du -sk python/
+    - run: cp ./python/bin/python3.7 ./python/bin/python3
+    - run: otool -L python/bin/python3
+    - run: ./python/bin/python3 -c 'import ssl; print(ssl.OPENSSL_VERSION)'
+    - run: otool -L python/lib/python3.7/lib-dynload/_ssl.cpython-37m-darwin.so
+    - run: ./python/bin/python3 -m pip --version
+    # Reduce built Python and upload it
+    - run: python process_python_build.py python/
+    - run: echo "Python 3.7.5" >> python/version.txt
+    - run: tar czf upload/python3-reduced.tar.gz python/
+    - uses: actions/upload-artifact@v1
+      with:
+        name: python3-reduced
+        path: ./upload/python3-reduced.tar.gz
