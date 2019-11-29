@@ -13,7 +13,7 @@ import py_compile
 VERBOSE = False
 
 # Python version is used for folder names and exec files in built output
-VERSION_STR = '3.6'
+VERSION_STR = '3.7'
 PYTHON_VER = 'python{}'.format(VERSION_STR)
 
 # Set the files and directories we can remove from a Python build folder
